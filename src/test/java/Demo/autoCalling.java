@@ -22,9 +22,16 @@ public class autoCalling {
 		dc.setCapability("appium:appActivity", "com.google.android.dialer.extensions.GoogleDialtactsActivity");
 		URL url = URI.create("http://127.0.0.1:4723/").toURL();
 		AndroidDriver driver = new AndroidDriver(url, dc);
-		Thread.sleep(5000);
-		
+		Thread.sleep(2000);
 		driver.findElement(By.id("com.google.android.dialer:id/dialpad_fab")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("com.google.android.dialer:id/digits")).sendKeys("9685745");
+		Thread.sleep(2000);
+		//Call button
+		driver.findElement(By.xpath("//android.widget.Button[@content-desc=\"dial\"]")).click();
+		Thread.sleep(5000);
+		//EndCall
+		driver.findElement(By.xpath("//android.widget.Button[@content-desc=\"End call\"]")).click();
 		
 
 	}
